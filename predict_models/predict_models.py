@@ -108,7 +108,7 @@ def create_model_from_name(model_name):
     elif model_name == "vision_transformer_model_02_brain_model":
         return create_vit_model(num_classes=3)
     else:
-        raise ValueError("Unsupported model name")
+        raise ValueError("Unsupported model name", model_name)
 
 
 def setup_learner(model_name, DATASET_PATH, MODEL_PATH=None):

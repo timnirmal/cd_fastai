@@ -26,8 +26,17 @@ DATASET_02_MODELS = [
     # 'vision_transformer_model_02_brain_model'
 ]
 
-ensemble_result = process_dataset("XAI/dataset_01_grad_cam/Hemorrhagic", 1, saliency_map=True)
+# process_dataset("XAI/dataset_01_grad_cam/Hemorrhagic", 1, saliency_map=True, grad_cam_map=True, dataset_01_models=DATASET_01_MODELS, dataset_02_models=DATASET_02_MODELS)
+# # process_dataset("XAI/dataset_01_grad_cam/Ischemic", 1, saliency_map=True, grad_cam_map=True, dataset_01_models=DATASET_01_MODELS, dataset_02_models=DATASET_02_MODELS)
+# process_dataset("XAI/dataset_01_grad_cam/Normal", 1, saliency_map=True, grad_cam_map=True, dataset_01_models=DATASET_01_MODELS, dataset_02_models=DATASET_02_MODELS)
+# process_dataset("XAI/dataset_02_grad_cam/Acute", 2, saliency_map=True, grad_cam_map=True, dataset_01_models=DATASET_01_MODELS, dataset_02_models=DATASET_02_MODELS)
+# process_dataset("XAI/dataset_02_grad_cam/Chronic", 2, saliency_map=True, grad_cam_map=True, dataset_01_models=DATASET_01_MODELS, dataset_02_models=DATASET_02_MODELS)
+# ensemble_result = process_dataset("XAI/dataset_02_grad_cam/Subacute", 2, saliency_map=True, grad_cam_map=True, dataset_01_models=DATASET_01_MODELS, dataset_02_models=DATASET_02_MODELS)
+
+ensemble_result = process_dataset(r"C:\D\Projects\CD\CD-FastAI\XAI\Required part for the Paper\Model 01", 1, saliency_map=True, grad_cam_map=True, dataset_01_models=DATASET_01_MODELS, dataset_02_models=DATASET_02_MODELS)
+ensemble_result = process_dataset(r"C:\D\Projects\CD\CD-FastAI\XAI\Required part for the Paper\Model 02", 2, saliency_map=True, grad_cam_map=True, dataset_01_models=DATASET_01_MODELS, dataset_02_models=DATASET_02_MODELS)
+
 # process_dataset("XAI/dataset_02_grad_cam/Acute", 2, DATASET_02_MODELS="densenet201_model_02_brain_model")
 
 print("Ensemble Result:")
-print(ensemble_result)
+# print(ensemble_result)

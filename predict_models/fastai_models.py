@@ -106,18 +106,23 @@ def process_dataset(dataset_path, dataset,
                 save_path = "saliency_maps/"
                 save_name = f"{image_path.stem}_{model_name}_saliency_map.jpg"
                 print(save_name)
-                # generate_saliency_map(model, image_path, save=True, save_path=save_path + save_name)
+                generate_saliency_map(model, image_path, save=True, save_path=save_path + save_name)
 
-                all_layers = get_layers(model)
-                for layer_name, layer in tqdm(all_layers, desc="Processing Layers"):
-                    print(layer)
-                    print("\n\n")
-                    # # generate_layer_conductance(model, image_path, save=True, save_path=save_path + save_name)
-                    # generate_layer_conductance(model, image_path, layer, save=True, save_path=save_path + save_name)
-                    # exit()
-                    save_path = "grad_cam/"
-                    save_name = f"{image_path.stem}_{model_name}_{layer_name}_grad_cam.jpg"
-                    generate_grad_cam(model, image_path, layer, save_path=save_path + save_name, save=True, show=False)
+                if grad_cam_map:
+                    all_layers = get_layers(model)
+                    for layer_name, layer in tqdm(all_layers, desc="Processing Layers"):
+                        # print(layer)
+                        # print("\n\n")
+                        # # generate_layer_conductance(model, image_path, save=True, save_path=save_path + save_name)
+                        # generate_layer_conductance(model, image_path, layer, save=True, save_path=save_path + save_name)
+                        # exit()
+                        save_path = "grad_cam/"
+                        # create folder with image name
+                        save_path += image_path.stem + "/"
+                        os.makedirs(save_path, exist_ok=True)
+                        save_name = f"{image_path.stem}_{model_name}_{layer_name}_grad_cam.jpg"
+                        print(save_name)
+                        generate_grad_cam(model, image_path, layer, save_path=save_path + save_name, save=True, show=False)
 
         # Use the last model's vocab for ensemble prediction interpretation
         final_pred, final_prob = ensemble_predict(predictions, models[-1])
